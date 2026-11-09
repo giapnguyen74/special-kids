@@ -378,6 +378,8 @@ class _HoldButtonState extends State<HoldButton>
 
   @override
   Widget build(BuildContext context) => GestureDetector(
+    // The whole button area reacts, not just the painted text/icon.
+    behavior: HitTestBehavior.opaque,
     onTapDown: (_) => _c.forward(from: 0),
     onTapUp: (_) {
       if (_c.value < 1) {
@@ -397,10 +399,13 @@ class _HoldButtonState extends State<HoldButton>
           children: [
             Container(
               color: AppColors.glass,
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+              constraints: const BoxConstraints(minWidth: 220, minHeight: 56),
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
               child: Text(
                 widget.label,
-                style: const TextStyle(fontSize: 16, color: AppColors.muted),
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700, color: AppColors.muted),
               ),
             ),
             // Progress fill ON TOP of the white background, so holding is visible.

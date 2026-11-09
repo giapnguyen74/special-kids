@@ -21,8 +21,9 @@ void main() {
     expect(find.text('Nhấn giữ để mở'), findsOneWidget);
     await tester.pump(const Duration(seconds: 3));
 
-    // Hold: the blue fill is visible while holding, then it opens.
-    final g = await tester.startGesture(tester.getCenter(find.text('Phụ huynh')));
+    // Hold near the EDGE of the button (not on the text): the whole button reacts.
+    final box = tester.getRect(find.byType(HoldButton));
+    final g = await tester.startGesture(Offset(box.left + 6, box.bottom - 6));
     for (var i = 0; i < 8; i++) {
       await tester.pump(const Duration(milliseconds: 100));
     }
