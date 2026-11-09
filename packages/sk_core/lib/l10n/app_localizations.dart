@@ -733,6 +733,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Press and hold to open'**
   String get holdToOpen;
+
+  /// No description provided for @pSpeechSpeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading speed'**
+  String get pSpeechSpeed;
+
+  /// No description provided for @speedSlow.
+  ///
+  /// In en, this message translates to:
+  /// **'Slow'**
+  String get speedSlow;
+
+  /// No description provided for @speedMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'A bit slow'**
+  String get speedMedium;
+
+  /// No description provided for @speedNormal.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal'**
+  String get speedNormal;
 }
 
 class _AppLocalizationsDelegate

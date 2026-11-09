@@ -1021,6 +1021,36 @@ class _ParentDashboardScreenState extends ConsumerState<ParentDashboardScreen> {
                   notifier.update((pp) => pp.effectsSoft = v ?? false),
             ),
           ),
+          row(
+            l.pSpeechSpeed,
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                DropdownButton<int>(
+                  value: p.speechSpeed,
+                  items: [
+                    DropdownMenuItem(value: 0, child: Text(l.speedSlow)),
+                    DropdownMenuItem(value: 1, child: Text(l.speedMedium)),
+                    DropdownMenuItem(value: 2, child: Text(l.speedNormal)),
+                  ],
+                  onChanged: (v) =>
+                      notifier.update((pp) => pp.speechSpeed = v ?? 1),
+                ),
+                IconButton(
+                  tooltip: '🔊',
+                  icon: const Text('🔊', style: TextStyle(fontSize: 22)),
+                  onPressed: () => ref
+                      .read(speechProvider)
+                      .speak(
+                        p.lang == Lang.vi
+                            ? 'Cho con xin quả cam ạ.'
+                            : 'Can I have an orange, please?',
+                        p.lang,
+                      ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

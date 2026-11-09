@@ -105,5 +105,9 @@
   "nextArrow": "Tiếp ▶",
   "extraMoves": "🎁 +5 lượt",
   "extraMovesNote": "Làm một bài nhỏ để được thêm 5 lượt nhé!",
-  "holdToOpen": "Nhấn giữ để mở"
+  "holdToOpen": "Nhấn giữ để mở",
+  "pSpeechSpeed": "Tốc độ đọc",
+  "speedSlow": "Chậm",
+  "speedMedium": "Hơi chậm",
+  "speedNormal": "Bình thường"
 }

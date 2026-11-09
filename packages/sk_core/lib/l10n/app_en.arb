@@ -136,5 +136,9 @@
   "nextArrow": "Next ▶",
   "extraMoves": "🎁 +5 moves",
   "extraMovesNote": "Do a little task to get 5 more moves!",
-  "holdToOpen": "Press and hold to open"
+  "holdToOpen": "Press and hold to open",
+  "pSpeechSpeed": "Reading speed",
+  "speedSlow": "Slow",
+  "speedMedium": "A bit slow",
+  "speedNormal": "Normal"
 }

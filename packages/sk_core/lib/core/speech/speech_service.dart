@@ -3,17 +3,28 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 import '../content/lang.dart';
+import '../progress/profile.dart';
 
 /// Text-to-speech using the device's built-in English/Vietnamese voices.
 /// TODO: add speech recognition (speech_to_text) to check the child's spoken sentence.
 class SpeechService {
+  SpeechService({int Function()? speed}) : _speed = speed ?? (() => 1);
+
+  /// Reading speed chosen by the parent: 0 = slow, 1 = a bit slow (default), 2 = normal.
+  final int Function() _speed;
   final FlutterTts _tts = FlutterTts();
   bool _ready = false;
 
   bool get _isIOS => !kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
 
-  // Speech-rate scales differ by platform: iOS 0.5 ≈ normal; Android/web 1.0 ≈ normal.
-  double get _rate => _isIOS ? 0.45 : 0.8;
+  /// flutter_tts rate: on Android and iOS 0.5 = normal speed (Android's 1.0 is mapped to 0.5);
+  /// on the web 1.0 = normal. Children hear it a little slower by default.
+  double get _rate {
+    const mobile = [0.33, 0.42, 0.5];
+    const web = [0.7, 0.85, 1.0];
+    final i = _speed().clamp(0, 2);
+    return kIsWeb ? web[i] : mobile[i];
+  }
 
   Future<void> _init() async {
     if (_ready) return;
@@ -56,4 +67,6 @@ class SpeechService {
   }
 }
 
-final speechProvider = Provider<SpeechService>((ref) => SpeechService());
+final speechProvider = Provider<SpeechService>(
+  (ref) => SpeechService(speed: () => ref.read(profileProvider).speechSpeed),
+);

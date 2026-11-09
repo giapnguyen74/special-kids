@@ -335,4 +335,16 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get holdToOpen => 'Nhấn giữ để mở';
+
+  @override
+  String get pSpeechSpeed => 'Tốc độ đọc';
+
+  @override
+  String get speedSlow => 'Chậm';
+
+  @override
+  String get speedMedium => 'Hơi chậm';
+
+  @override
+  String get speedNormal => 'Bình thường';
 }

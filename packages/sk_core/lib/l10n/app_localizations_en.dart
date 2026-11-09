@@ -334,4 +334,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get holdToOpen => 'Press and hold to open';
+
+  @override
+  String get pSpeechSpeed => 'Reading speed';
+
+  @override
+  String get speedSlow => 'Slow';
+
+  @override
+  String get speedMedium => 'A bit slow';
+
+  @override
+  String get speedNormal => 'Normal';
 }

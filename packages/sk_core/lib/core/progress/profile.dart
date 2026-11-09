@@ -31,6 +31,7 @@ class ChildProfile {
     this.cueDelayMs = 3000,
     this.sessionLimitMin = 20,
     this.effectsSoft = false,
+    this.speechSpeed = 1,
     Map<String, int>? playMs,
     List<int>? songs,
     Map<String, int>? gameLevels,
@@ -68,6 +69,9 @@ class ChildProfile {
   /// Softer visual effects (fewer particles, no shake) for sensory-sensitive children.
   bool effectsSoft;
 
+  /// Reading speed of the voice: 0 = slow, 1 = a bit slow (default), 2 = normal.
+  int speechSpeed;
+
   /// Skill lessons enabled per game and slot: gameId -> slotName -> [moduleId].
   /// A game missing here uses its default set.
   Map<String, Map<String, List<String>>> skills;
@@ -103,6 +107,7 @@ class ChildProfile {
     'cueDelayMs': cueDelayMs,
     'sessionLimitMin': sessionLimitMin,
     'effectsSoft': effectsSoft,
+    'speechSpeed': speechSpeed,
     'playMs': playMs,
     'songs': songs,
     'gameLevels': gameLevels,
@@ -134,6 +139,7 @@ class ChildProfile {
       cueDelayMs: j['cueDelayMs'] as int? ?? 3000,
       sessionLimitMin: j['sessionLimitMin'] as int? ?? 20,
       effectsSoft: j['effectsSoft'] as bool? ?? false,
+      speechSpeed: j['speechSpeed'] as int? ?? 1,
       playMs: _intMap(j['playMs']),
       songs: (j['songs'] as List?)?.cast<int>().toList(),
       gameLevels: _intMap(j['gameLevels']),
