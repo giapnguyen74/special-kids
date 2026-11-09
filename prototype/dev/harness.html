@@ -1,0 +1,86 @@
+<!doctype html>
+<!-- Dev-only: renders the app in a phone-sized frame and auto-drives it to a given screen for screenshots. -->
+<html><head><meta charset="utf-8"><style>
+  body { margin: 0; background: #333; display: flex; gap: 20px; padding: 20px; }
+  iframe { border: 0; background: #000; }
+</style></head>
+<body>
+<iframe id="f"></iframe>
+<script>
+  const q = new URLSearchParams(location.search);
+  const step = q.get('step') || 'home';
+  const [w, h] = (q.get('size') || '390x844').split('x').map(Number);
+  const f = document.getElementById('f');
+  f.width = w; f.height = h;
+  localStorage.clear();
+  f.src = "../index.html?dev";
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  f.onload = () => run().catch(e => console.log('harness error', e.message)).finally(() => { window.__done = true; });
+  const run = async () => {
+    const d = f.contentDocument, W = f.contentWindow;
+    W.localStorage.clear();
+    if (q.get('lang') === 'vi') d.querySelector('[data-lang="vi"]').click();
+    await sleep(300);
+    if (step === 'home') return;
+    d.getElementById('btnPlay').click();
+    await sleep(500);
+    if (step === 'intro') return;
+    d.getElementById('btnStart').click();
+    await sleep(1200);
+    // Play valid moves by simulating swipes using the engine's move finder on the visible board
+    const board = d.getElementById('board');
+    const swipe = async (a, b) => {
+      const r = board.getBoundingClientRect(), s = r.width / 7;
+      const p = (cell) => ({ x: r.left + (cell[1] + .5) * s, y: r.top + (cell[0] + .5) * s });
+      const A = p(a), B = p(b);
+      const ev = (type, pt) => board.dispatchEvent(new W.PointerEvent(type, { bubbles: true, clientX: pt.x, clientY: pt.y, pointerId: 1 }));
+      ev('pointerdown', A); ev('pointermove', B); ev('pointerup', B);
+    };
+    const E = await import('../js/engine.js');
+    // Reconstruct board types from tile positions
+    const readGrid = () => {
+      const g = Array.from({ length: 7 }, () => Array(7).fill(null));
+      const s = board.getBoundingClientRect().width / 7;
+      board.querySelectorAll('.tile:not(.pop)').forEach(t => {
+        const m = t.style.transform.match(/translate\(([-\d.]+)px, ([-\d.]+)px\)/);
+        const c = Math.round(+m[1] / s), r = Math.round(+m[2] / s);
+        if (r >= 0 && r < 7) g[r][c] = { type: t.classList.contains('rainbow') ? 'R' : t.textContent, special: null };
+      });
+      return g;
+    };
+    const moves = step === 'game' ? 3 : 40;
+    for (let i = 0; i < moves; i++) {
+      if (!d.getElementById('overlay').hidden) break;
+      const g = readGrid();
+      if (g.flat().some(x => !x)) { await sleep(300); continue; }
+      const m = E.findAnyMove(g);
+      console.log("HARNESS move", i, JSON.stringify(m), d.getElementById("hudMoves").textContent, d.getElementById("hudGoals").textContent);
+      if (m) await swipe(m[0], m[1]);
+      await sleep(1600);
+    }
+    if (step === 'game' || step === 'win') return;
+    d.querySelector('#ovButtons .btn.primary')?.click();
+    await sleep(600);
+    if (step === 'choice') return;
+    d.querySelector('.choice').click();
+    await sleep(600);
+    if (step === 'build') { d.querySelectorAll('.wtile')[0].click(); await sleep(300); return; }
+    // Build the sentence correctly by reading slots from the template order
+    for (let k = 0; k < 10; k++) {
+      const empty = d.querySelectorAll('.slot:not(.filled)').length;
+      if (!empty) break;
+      for (const b of d.querySelectorAll('.wtile:not(.used)')) {
+        const before = d.querySelectorAll('.slot.filled').length;
+        b.click();
+        await sleep(50);
+        if (d.querySelectorAll('.slot.filled').length > before) break;
+      }
+    }
+    await sleep(400);
+    if (step === 'say') return;
+    d.getElementById('btnSaid').click();
+    await sleep(800);
+    if (step === 'reward') return;
+  };
+</script>
+</body></html>

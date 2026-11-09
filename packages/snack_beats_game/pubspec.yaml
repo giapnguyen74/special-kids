@@ -1,0 +1,21 @@
+name: snack_beats_game
+description: Snack Beats match-3 game module (used by the Special Kids hub app and the standalone Snack Beats app).
+publish_to: none
+version: 1.0.0
+resolution: workspace
+
+environment:
+  sdk: ^3.13.7
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^3.5.0
+  flame: ^1.38.2
+  sk_core:
+    path: ../sk_core
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0

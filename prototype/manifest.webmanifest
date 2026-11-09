@@ -1,0 +1,13 @@
+{
+  "name": "Snack Beats",
+  "short_name": "Snack Beats",
+  "description": "Match food, make music, and practice starting, choosing and speaking.",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#101633",
+  "theme_color": "#101633",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

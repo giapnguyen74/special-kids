@@ -1,0 +1,10 @@
+# Dart/Flutter workspace: one dependency resolution for all apps and packages.
+name: special_kids_workspace
+publish_to: none
+environment:
+  sdk: ^3.13.7
+workspace:
+  - apps/special_kids
+  - apps/snack_beats
+  - packages/sk_core
+  - packages/snack_beats_game

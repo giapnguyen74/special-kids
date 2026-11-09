@@ -1,0 +1,20 @@
+# Build output
+build/
+dist/
+.dart_tool/
+.flutter-plugins-dependencies
+*.iml
+.idea/
+.DS_Store
+**/ios/Pods/
+**/ios/Flutter/ephemeral/
+**/android/.gradle/
+**/android/local.properties
+**/android/key.properties
+# Signing material never goes in the repo
+*.jks
+*.keystore
+*.p8
+# Local assistant/tool state
+.claude/
+.theta/

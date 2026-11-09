@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#101633">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Snack Beats">
+  <title>Snack Beats</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<section id="home" class="screen">
+  <div class="topbar">
+    <div class="stars">⭐ <span class="starCount">0</span></div>
+    <div class="lang" id="langToggle"><button data-lang="en">EN</button><button data-lang="vi">VI</button></div>
+  </div>
+  <div class="hero">
+    <div class="logo">🍓🎵🥭</div>
+    <h1>Snack Beats</h1>
+    <p data-i18n="tagline"></p>
+  </div>
+  <button id="btnPlay" class="btn primary big"><span data-i18n="play"></span><small id="homeLevel"></small></button>
+  <div class="row">
+    <button id="btnMusic" class="btn">🎵 <span data-i18n="myMusic"></span></button>
+    <button id="btnCalm" class="btn">🌙 <span data-i18n="calm"></span></button>
+  </div>
+  <button id="btnParents" class="hold">👪 <span data-i18n="parents"></span> (<span data-i18n="holdHint"></span>)</button>
+</section>
+
+<section id="intro" class="screen">
+  <div class="topbar">
+    <button class="btn icon" data-go="home">⌂</button>
+    <div class="pill" id="introLevel"></div>
+    <div class="stars">⭐ <span class="starCount">0</span></div>
+  </div>
+  <div class="customer" id="introCustomer"></div>
+  <div class="bubble"><p id="introText"></p><button class="btn icon" id="introSpeak">🔊</button></div>
+  <div class="goal-chips" id="introGoals"></div>
+  <button id="btnStart" class="btn primary big" data-i18n="start"></button>
+</section>
+
+<section id="game" class="screen">
+  <div class="hud">
+    <button class="btn icon" id="gameHome">⌂</button>
+    <div class="goals" id="hudGoals"></div>
+    <div class="moves" id="hudMoves"></div>
+  </div>
+  <div id="boardWrap"><div id="board"></div></div>
+  <div class="overlay" id="overlay" hidden>
+    <div class="card">
+      <div class="big-emoji" id="ovEmoji"></div>
+      <h2 id="ovTitle"></h2>
+      <div class="row" id="ovButtons"></div>
+    </div>
+  </div>
+</section>
+
+<section id="sentence" class="screen scroll">
+  <div class="topbar">
+    <button class="btn icon" data-go="home">⌂</button>
+    <div class="customer small" id="sCustomer"></div>
+    <div class="stars">⭐ <span class="starCount">0</span></div>
+  </div>
+  <div class="bubble"><p id="sPrompt"></p><button class="btn icon" id="sSpeak">🔊</button></div>
+  <div id="sChoices" class="choices"></div>
+  <div id="sBuild" hidden>
+    <div class="slots" id="sSlots"></div>
+    <div class="tiles" id="sTiles"></div>
+  </div>
+  <div id="sSay" class="say" hidden>
+    <p class="said-sentence" id="sFinal"></p>
+    <p data-i18n="sayIt"></p>
+    <div class="row">
+      <button class="btn primary" id="btnSaid" data-i18n="saidIt"></button>
+      <button class="btn" id="btnSkip" data-i18n="skip"></button>
+    </div>
+  </div>
+</section>
+
+<section id="reward" class="screen">
+  <div class="topbar"><div></div><div class="stars">⭐ <span class="starCount">0</span></div></div>
+  <div class="big-emoji bounce">🎶</div>
+  <h2 id="rTitle"></h2>
+  <p class="song-title" id="rSong"></p>
+  <div class="row">
+    <button class="btn" data-go="home" data-i18n="home"></button>
+    <button class="btn primary big" id="btnNext" data-i18n="next"></button>
+  </div>
+</section>
+
+<section id="music" class="screen">
+  <div class="topbar"><button class="btn icon" data-go="home">⌂</button><h2 data-i18n="myMusic"></h2><div></div></div>
+  <div class="song-list" id="songList"></div>
+</section>
+
+<section id="parents" class="screen scroll"><div class="p-wrap" id="parentBody"></div></section>
+
+<section id="break" class="screen">
+  <div class="big-emoji">🌿</div>
+  <h2 data-i18n="breakTitle"></h2>
+  <p class="song-title" data-i18n="breakMsg"></p>
+  <button class="hold" id="btnBreakContinue"><span data-i18n="parentContinue"></span></button>
+</section>
+
+<div id="toast"></div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

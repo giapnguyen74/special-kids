@@ -1,0 +1,139 @@
+{
+  "@@locale": "en",
+  "appTitle": "Special Kids",
+  "hubTagline": "Play, learn, and make music",
+  "levelN": "Level {n}",
+  "@levelN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "play": "Play",
+  "start": "Let's go!",
+  "myMusic": "My Music",
+  "calm": "Calm Mode",
+  "parentsHold": "Parents (hold)",
+  "comingSoon": "Coming soon",
+  "moves": "Moves",
+  "orderDone": "Order complete! +3 ⭐",
+  "serve": "Serve the order ▶",
+  "almost": "So close! Let's try again.",
+  "tryAgain": "Try again",
+  "home": "Home",
+  "whatWant": "Thank you! Now you pick a treat. What do you want?",
+  "makeSentence": "Make the sentence",
+  "sayIt": "Your turn! Say it out loud 🎤",
+  "saidIt": "I said it! 🎤",
+  "skip": "Skip",
+  "selfStart": "You started by yourself! +1 ⭐",
+  "newSong": "New song unlocked!",
+  "greatJob": "Great job!",
+  "greatJobStars": "Great job! +3 ⭐",
+  "nextLevel": "Next level ▶",
+  "locked": "Locked",
+  "calmTitle": "Calm — no goals, just relax",
+  "breakTitle": "Great playing!",
+  "breakMsg": "Time for a break. 🎵",
+  "parentContinue": "Parent: hold to continue",
+  "pTitle": "Parent dashboard",
+  "pNote": "All data stays on this device only.",
+  "pPlayToday": "Play time today",
+  "pSelfStarts": "Started without a cue",
+  "pAvgStart": "Avg. time to start (last 10)",
+  "pSentences": "Sentences built",
+  "pAvgLen": "Avg. sentence length (words)",
+  "pNoHint": "Sentences with no help",
+  "pSpoke": "Said it out loud",
+  "pLevels": "Levels completed",
+  "pWeek": "Last 7 days",
+  "pDay": "Day",
+  "pMin": "Min",
+  "pHelp": "Current help level (adjusts automatically)",
+  "pSentHelp": "Sentence help",
+  "helpFull": "Full model shown",
+  "helpFirst": "First word shown",
+  "helpNone": "No hints",
+  "pCue": "Start cue appears after",
+  "pSettings": "Settings",
+  "pLang": "Language",
+  "pLimit": "Break after",
+  "pOff": "Off",
+  "minutesN": "{n} min",
+  "@minutesN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "secondsN": "{n} s",
+  "@secondsN": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "pVoices": "Voices on this device",
+  "pVoiceMissing": "missing — add it in device speech settings",
+  "pReset": "Reset all progress",
+  "pResetConfirm": "Delete all progress and history?",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "gameSnackBeats": "Snack Beats",
+  "gameSnackBeatsDesc": "Match food. Make music.",
+  "gameCafe": "Café",
+  "gameKitchen": "Kitchen",
+  "gameMyDay": "My Day",
+  "gameTalk": "Talk Board",
+  "praiseNice": "Nice!",
+  "praiseGreat": "Great!",
+  "praiseAwesome": "Awesome!",
+  "praiseAmazing": "Amazing!",
+  "pEffects": "Visual effects",
+  "effectsFull": "Full (bright & bouncy)",
+  "effectsSoft": "Soft (calmer, no shaking)",
+  "gameSing": "Sing & Say",
+  "gameSingDesc": "Sing songs. Say sentences.",
+  "chooseSong": "Choose a song",
+  "letsSing": "Let's sing!",
+  "getReady": "Get ready…",
+  "listenFirst": "Listen…",
+  "singNow": "Sing! 🎤",
+  "sayRound": "Now say it!",
+  "yourTurn": "Your turn! Say it 🎤",
+  "greatSinging": "Great singing! +1 ⭐",
+  "greatTalking": "Great talking! +2 ⭐",
+  "didYouSing": "Did you sing along?",
+  "iSang": "I sang! 🎤",
+  "singAgain": "Sing again",
+  "otherSongs": "Other songs",
+  "micOff": "Mic is off — that's okay! Just sing.",
+  "linesSung": "{n} of {total} lines with your voice",
+  "@linesSung": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "songDone": "You sang the whole song!",
+  "pSongs": "Songs sung",
+  "pVoiced": "Lines sung with voice (est.)",
+  "pSaid": "Sentences said aloud (est.)",
+  "restartTitle": "Start this level again?",
+  "restartYes": "Restart ↻",
+  "restartNo": "Keep playing",
+  "pSentenceEvery": "Sentence practice after a level",
+  "everyLevel": "Every level",
+  "every2": "Every 2 levels",
+  "every3": "Every 3 levels",
+  "nextArrow": "Next ▶",
+  "extraMoves": "🎁 +5 moves",
+  "extraMovesNote": "Do a little task to get 5 more moves!"
+}
