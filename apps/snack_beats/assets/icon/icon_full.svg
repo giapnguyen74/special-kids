@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><defs>
+ <radialGradient id="sky" cx="50%" cy="45%" r="70%">
+  <stop offset="0" stop-color="#7FDBFF"/><stop offset="0.55" stop-color="#2979FF"/><stop offset="1" stop-color="#1A237E"/>
+ </radialGradient>
+</defs>
+<rect width="1024" height="1024" fill="url(#sky)"/>
+<path d="M512,512 L1404.3,394.5 L1404.3,629.5 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L1343.5,856.4 L1226.0,1059.9 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L1059.9,1226.0 L856.4,1343.5 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L629.5,1404.3 L394.5,1404.3 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L167.6,1343.5 L-35.9,1226.0 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L-202.0,1059.9 L-319.5,856.4 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L-380.3,629.5 L-380.3,394.5 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L-319.5,167.6 L-202.0,-35.9 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L-35.9,-202.0 L167.6,-319.5 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L394.5,-380.3 L629.5,-380.3 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L856.4,-319.5 L1059.9,-202.0 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L1226.0,-35.9 L1343.5,167.6 Z" fill="#FFFFFF" opacity="0.13"/><defs>
+ <linearGradient id="berry" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FF6E6E"/><stop offset="0.5" stop-color="#FF1744"/><stop offset="1" stop-color="#B71C1C"/>
+ </linearGradient>
+ <linearGradient id="leaf" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#76FF03"/><stop offset="1" stop-color="#2E7D32"/>
+ </linearGradient>
+ <linearGradient id="note" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#FFF176"/><stop offset="1" stop-color="#FFB300"/>
+ </linearGradient>
+</defs>
+<!-- shadow -->
+<ellipse cx="512" cy="905" rx="210" ry="34" fill="#000" opacity="0.25"/>
+<!-- strawberry body -->
+<path d="M512,890 C370,830 235,670 245,505 C255,385 375,340 512,365 C649,340 769,385 779,505 C789,670 654,830 512,890 Z"
+      fill="url(#berry)" stroke="#5D0000" stroke-width="20" stroke-linejoin="round"/>
+<path d="M330,470 C340,420 400,395 450,405 C400,430 360,480 350,560 C330,540 325,500 330,470 Z" fill="#FFFFFF" opacity="0.55"/>
+<ellipse cx="350" cy="560" rx="14" ry="22" fill="#FFF59D" stroke="#B71C1C" stroke-width="4"/><ellipse cx="456" cy="560" rx="14" ry="22" fill="#FFF59D" stroke="#B71C1C" stroke-width="4"/><ellipse cx="568" cy="560" rx="14" ry="22" fill="#FFF59D" stroke="#B71C1C" stroke-width="4"/><ellipse cx="674" cy="560" rx="14" ry="22" fill="#FFF59D" stroke="#B71C1C" stroke-width="4"/><ellipse cx="410" cy="650" rx="14" ry="22" fill="#FFF59D" stroke="#B71C1C" stroke-width="4"/><ellipse cx="512" cy="650" rx="14" ry="22" fill="#FFF59D" stroke="#B71C1C" stroke-width="4"/><ellipse cx="614" cy="650" rx="14" ry="22" fill="#FFF59D" stroke="#B71C1C" stroke-width="4"/><ellipse cx="460" cy="735" rx="14" ry="22" fill="#FFF59D" stroke="#B71C1C" stroke-width="4"/><ellipse cx="564" cy="735" rx="14" ry="22" fill="#FFF59D" stroke="#B71C1C" stroke-width="4"/>
+<!-- leaf crown -->
+<g stroke="#1B5E20" stroke-width="14" stroke-linejoin="round" fill="url(#leaf)">
+ <path d="M512,395 C440,400 360,380 330,330 C400,315 460,330 512,370 Z"/>
+ <path d="M512,395 C584,400 664,380 694,330 C624,315 564,330 512,370 Z"/>
+ <path d="M512,385 C470,350 455,300 475,250 C510,280 525,330 512,385 Z"/>
+ <path d="M512,385 C554,350 569,300 549,250 C514,280 499,330 512,385 Z"/>
+ <path d="M512,400 C470,420 420,450 395,500 C450,500 495,460 512,400 Z"/>
+ <path d="M512,400 C554,420 604,450 629,500 C574,500 529,460 512,400 Z"/>
+</g>
+<path d="M512,300 C505,250 515,205 545,175" stroke="#1B5E20" stroke-width="26" fill="none" stroke-linecap="round"/>
+<path d="M512,300 C505,250 515,205 545,175" stroke="#7CB342" stroke-width="12" fill="none" stroke-linecap="round"/>
+<!-- music note -->
+<g transform="translate(700,140) rotate(12)" stroke="#5D3A00" stroke-width="16" stroke-linejoin="round" fill="url(#note)">
+ <path d="M110,40 L110,250 C110,300 60,330 15,320 C-30,310 -35,265 0,240 C30,220 70,225 90,240 L90,70 Z"/>
+ <path d="M110,40 C170,60 205,110 200,170 C185,135 150,115 110,115 Z"/>
+</g>
+<!-- sparkles -->
+<g fill="#FFFFFF">
+ <path d="M200,230 Q212,268 250,280 Q212,292 200,330 Q188,292 150,280 Q188,268 200,230 Z"/>
+ <path d="M830,560 Q838,585 863,593 Q838,601 830,626 Q822,601 797,593 Q822,585 830,560 Z"/>
+ <path d="M175,690 Q182,712 204,719 Q182,726 175,748 Q168,726 146,719 Q168,712 175,690 Z"/>
+</g></svg>

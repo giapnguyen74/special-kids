@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"><defs>
+ <radialGradient id="sky" cx="50%" cy="45%" r="70%">
+  <stop offset="0" stop-color="#7FDBFF"/><stop offset="0.55" stop-color="#2979FF"/><stop offset="1" stop-color="#1A237E"/>
+ </radialGradient>
+</defs>
+<rect width="1024" height="1024" fill="url(#sky)"/>
+<path d="M512,512 L1404.3,394.5 L1404.3,629.5 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L1343.5,856.4 L1226.0,1059.9 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L1059.9,1226.0 L856.4,1343.5 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L629.5,1404.3 L394.5,1404.3 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L167.6,1343.5 L-35.9,1226.0 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L-202.0,1059.9 L-319.5,856.4 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L-380.3,629.5 L-380.3,394.5 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L-319.5,167.6 L-202.0,-35.9 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L-35.9,-202.0 L167.6,-319.5 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L394.5,-380.3 L629.5,-380.3 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L856.4,-319.5 L1059.9,-202.0 Z" fill="#FFFFFF" opacity="0.13"/><path d="M512,512 L1226.0,-35.9 L1343.5,167.6 Z" fill="#FFFFFF" opacity="0.13"/></svg>
