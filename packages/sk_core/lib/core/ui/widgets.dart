@@ -405,7 +405,11 @@ class _HoldButtonState extends State<HoldButton>
               child: Text(
                 widget.label,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w700, color: AppColors.muted),
+                style: const TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.muted,
+                ),
               ),
             ),
             // Progress fill ON TOP of the white background, so holding is visible.

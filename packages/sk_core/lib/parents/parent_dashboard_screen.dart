@@ -351,7 +351,7 @@ class _ParentDashboardScreenState extends ConsumerState<ParentDashboardScreen> {
     ParentInsights ins,
     String Function(String, String) t,
   ) sync* {
-    final update = ref.watch(appUpdateProvider).value;
+    final update = ref.watch(appUpdateProvider);
     if (update != null) {
       yield _card(
         color: const Color(0xFFE8F5E9),
@@ -1054,6 +1054,65 @@ class _ParentDashboardScreenState extends ConsumerState<ParentDashboardScreen> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [Text(r('English', en)), Text(r('Tiếng Việt', vi))],
+          );
+        },
+      ),
+    );
+    yield _h(t('App version', 'Phiên bản'));
+    yield _card(
+      child: Consumer(
+        builder: (context, ref, _) {
+          final st = ref.watch(updateStatusProvider);
+          final s = st.value;
+          final String line;
+          if (st.isLoading) {
+            line = t('Checking…', 'Đang kiểm tra…');
+          } else if (s == null) {
+            line = '';
+          } else if (!s.checked) {
+            line = t(
+              'Updates are not checked on this device.',
+              'Thiết bị này không kiểm tra cập nhật.',
+            );
+          } else if (s.error != null) {
+            line = t(
+              'Could not check (${s.error}).',
+              'Không kiểm tra được (${s.error}).',
+            );
+          } else if (s.update != null) {
+            line = t(
+              'New version ${s.update!.version} is available.',
+              'Đã có bản mới ${s.update!.version}.',
+            );
+          } else {
+            line = t('This is the latest version.', 'Đây là bản mới nhất.');
+          }
+          return Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${t('Installed', 'Đang dùng')}: ${s?.current ?? '…'}',
+                      style: const TextStyle(fontWeight: FontWeight.w800),
+                    ),
+                    Text(line, style: const TextStyle(color: AppColors.muted)),
+                  ],
+                ),
+              ),
+              if (s?.update != null)
+                FilledButton(
+                  style: FilledButton.styleFrom(backgroundColor: Pure.green),
+                  onPressed: () => openUpdate(s!.update!),
+                  child: Text(t('Download', 'Tải về')),
+                )
+              else
+                OutlinedButton(
+                  onPressed: () => ref.invalidate(updateStatusProvider),
+                  child: Text(t('Check for updates', 'Kiểm tra cập nhật')),
+                ),
+            ],
           );
         },
       ),
