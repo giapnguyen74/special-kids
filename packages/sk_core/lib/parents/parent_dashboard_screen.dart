@@ -10,6 +10,7 @@ import '../core/ui/theme.dart';
 import '../core/ui/widgets.dart';
 import '../l10n/app_localizations.dart';
 import '../core/skills/skills.dart';
+import '../core/update/update_button.dart';
 import '../core/update/update_checker.dart';
 import 'insights.dart';
 
@@ -393,11 +394,7 @@ class _ParentDashboardScreenState extends ConsumerState<ParentDashboardScreen> {
               ),
             ),
             const SizedBox(width: 8),
-            FilledButton(
-              style: FilledButton.styleFrom(backgroundColor: Pure.green),
-              onPressed: () => openUpdate(update),
-              child: Text(t('Download', 'Tải về')),
-            ),
+            UpdateButton(update: update),
           ],
         ),
       );
@@ -1102,11 +1099,7 @@ class _ParentDashboardScreenState extends ConsumerState<ParentDashboardScreen> {
                 ),
               ),
               if (s?.update != null)
-                FilledButton(
-                  style: FilledButton.styleFrom(backgroundColor: Pure.green),
-                  onPressed: () => openUpdate(s!.update!),
-                  child: Text(t('Download', 'Tải về')),
-                )
+                UpdateButton(update: s!.update!)
               else
                 OutlinedButton(
                   onPressed: () => ref.invalidate(updateStatusProvider),
