@@ -23,12 +23,16 @@ export SK_KEYSTORE_PASSWORD
   --dart-define=SK_FEED_URL="$FEED_URL" | tail -1)
 cp "$DIR/build/app/outputs/flutter-apk/app-release.apk" "$APK"
 
-# Make sure it is signed with the release key, not the debug key.
+# Make sure it is signed with the release key (must positively find our certificate).
+export JAVA_HOME="${JAVA_HOME:-$(/usr/libexec/java_home -v 17 2>/dev/null || echo /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home)}"
 APKSIGNER="$(ls -d "$ANDROID_HOME"/build-tools/*/apksigner | sort | tail -1)"
-if "$APKSIGNER" verify --print-certs "$APK" | grep -q "CN=Android Debug"; then
-  echo "✗ APK is debug-signed" >&2
+CERTS="$("$APKSIGNER" verify --print-certs "$APK")" || { echo "✗ APK signature does not verify" >&2; exit 1; }
+if ! grep -q "CN=Special Kids" <<<"$CERTS"; then
+  echo "✗ APK is not signed with the release key:" >&2
+  echo "$CERTS" >&2
   exit 1
 fi
+echo "✓ signed with the release key"
 
 SHA="$(shasum -a 256 "$APK" | cut -d' ' -f1)"
 cat >"$OUT/latest.json" <<JSON
