@@ -135,5 +135,6 @@
   "every3": "Every 3 levels",
   "nextArrow": "Next ▶",
   "extraMoves": "🎁 +5 moves",
-  "extraMovesNote": "Do a little task to get 5 more moves!"
+  "extraMovesNote": "Do a little task to get 5 more moves!",
+  "holdToOpen": "Press and hold to open"
 }

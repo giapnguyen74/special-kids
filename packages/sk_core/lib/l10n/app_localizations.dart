@@ -727,6 +727,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Do a little task to get 5 more moves!'**
   String get extraMovesNote;
+
+  /// No description provided for @holdToOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Press and hold to open'**
+  String get holdToOpen;
 }
 
 class _AppLocalizationsDelegate

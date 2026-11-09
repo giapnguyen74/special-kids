@@ -331,4 +331,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get extraMovesNote => 'Do a little task to get 5 more moves!';
+
+  @override
+  String get holdToOpen => 'Press and hold to open';
 }

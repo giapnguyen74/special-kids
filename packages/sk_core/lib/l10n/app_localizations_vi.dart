@@ -332,4 +332,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get extraMovesNote => 'Làm một bài nhỏ để được thêm 5 lượt nhé!';
+
+  @override
+  String get holdToOpen => 'Nhấn giữ để mở';
 }

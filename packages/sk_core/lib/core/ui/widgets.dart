@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../content/lang.dart';
 import '../progress/event_log.dart';
 import '../progress/profile.dart';
+import '../../l10n/app_localizations.dart';
 import 'palette.dart';
 import 'theme.dart';
 
@@ -378,7 +379,15 @@ class _HoldButtonState extends State<HoldButton>
   @override
   Widget build(BuildContext context) => GestureDetector(
     onTapDown: (_) => _c.forward(from: 0),
-    onTapUp: (_) => _c.value < 1 ? _c.reverse() : null,
+    onTapUp: (_) {
+      if (_c.value < 1) {
+        // Let go too early: explain that it must be held (a quick tap used to do nothing visible).
+        if (_c.value < 0.6) {
+          showToast(context, AppLocalizations.of(context).holdToOpen);
+        }
+        _c.reverse();
+      }
+    },
     onTapCancel: () => _c.reverse(),
     child: ClipRRect(
       borderRadius: BorderRadius.circular(14),
@@ -386,19 +395,22 @@ class _HoldButtonState extends State<HoldButton>
         animation: _c,
         builder: (_, _) => Stack(
           children: [
-            Positioned.fill(
-              child: FractionallySizedBox(
-                alignment: Alignment.centerLeft,
-                widthFactor: _c.value,
-                child: ColoredBox(color: Pure.blue.withValues(alpha: 0.3)),
-              ),
-            ),
             Container(
               color: AppColors.glass,
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
               child: Text(
                 widget.label,
                 style: const TextStyle(fontSize: 16, color: AppColors.muted),
+              ),
+            ),
+            // Progress fill ON TOP of the white background, so holding is visible.
+            Positioned.fill(
+              child: IgnorePointer(
+                child: FractionallySizedBox(
+                  alignment: Alignment.centerLeft,
+                  widthFactor: _c.value,
+                  child: ColoredBox(color: Pure.blue.withValues(alpha: 0.35)),
+                ),
               ),
             ),
           ],
