@@ -6,5 +6,7 @@ environment:
 workspace:
   - apps/special_kids
   - apps/snack_beats
+  - apps/color_beats
   - packages/sk_core
   - packages/snack_beats_game
+  - packages/color_beats_game

@@ -46,6 +46,20 @@ const _requests = <Lang, List<List<String>>>{
   ],
 };
 
+/// Same requests when the reward is new blocks (Color Beats: the board is full).
+const _blockRequests = <Lang, List<List<String>>>{
+  Lang.en: [
+    ['Can', 'I', 'have', 'more', 'blocks', 'please'],
+    ['I', 'need', 'more', 'space', 'please'],
+    ['Please', 'help', 'me'],
+  ],
+  Lang.vi: [
+    ['Cho', 'con', 'thêm', 'gạch', 'ạ'],
+    ['Con', 'cần', 'thêm', 'chỗ', 'ạ'],
+    ['Giúp', 'con', 'với', 'ạ'],
+  ],
+};
+
 const _distractors = {Lang.en: 'go', Lang.vi: 'đi'};
 
 /// Full-screen mini lesson (skill modules "ask_help" and "counting"). Pops a [SkillOutcome] when done (never fails: errorless help).
@@ -57,6 +71,7 @@ class BonusLessonScreen extends ConsumerStatefulWidget {
     required this.seed,
     this.game,
     this.reward = '+5',
+    this.rewardKind = SkillReward.moves,
   });
   final BonusTask task;
   final int seed;
@@ -64,6 +79,7 @@ class BonusLessonScreen extends ConsumerStatefulWidget {
 
   /// What the child earns, shown in the title (e.g. "+5").
   final String reward;
+  final SkillReward rewardKind;
 
   @override
   ConsumerState<BonusLessonScreen> createState() => _BonusLessonScreenState();
@@ -76,8 +92,9 @@ class _BonusLessonScreenState extends ConsumerState<BonusLessonScreen> {
   String t(String en, String v) => vi ? v : en;
 
   // request
-  late final List<String> words =
-      _requests[lang]![widget.seed % _requests[lang]!.length];
+  late final List<List<String>> _pool =
+      (widget.rewardKind == SkillReward.blocks ? _blockRequests : _requests)[lang]!;
+  late final List<String> words = _pool[widget.seed % _pool.length];
   SentenceResult? _built;
 
   // count
@@ -96,10 +113,15 @@ class _BonusLessonScreenState extends ConsumerState<BonusLessonScreen> {
   bool _countDone = false;
 
   String get _prompt => widget.task == BonusTask.request
-      ? t(
-          'Want ${widget.reward} moves? Ask nicely!',
-          'Muốn thêm ${widget.reward} lượt? Hãy xin thật lễ phép nhé!',
-        )
+      ? (widget.rewardKind == SkillReward.blocks
+            ? t(
+                'Want more space and new blocks? Ask nicely!',
+                'Muốn thêm chỗ và gạch mới? Hãy xin thật lễ phép nhé!',
+              )
+            : t(
+                'Want ${widget.reward} moves? Ask nicely!',
+                'Muốn thêm ${widget.reward} lượt? Hãy xin thật lễ phép nhé!',
+              ))
       : t(
           'How many ${foods[countFood].words(lang).plural}?',
           'Có bao nhiêu ${foods[countFood].vi.count}?',

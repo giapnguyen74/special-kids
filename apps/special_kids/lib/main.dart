@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sk_core/core/progress/profile.dart';
 import 'package:sk_core/core/skills/skills.dart';
 import 'package:snack_beats_game/snack_beats/snack_beats.dart';
+import 'package:color_beats_game/color_beats/color_beats.dart';
 import 'package:sk_core/core/ui/routes.dart';
 import 'package:sk_core/core/ui/theme.dart';
 
@@ -20,7 +21,10 @@ Future<void> main() async {
       overrides: [
         prefsProvider.overrideWithValue(prefs),
         // Games in this app (for the parent's lesson settings).
-        gameSkillSpecsProvider.overrideWithValue(const [SnackBeats.skillSpec]),
+        gameSkillSpecsProvider.overrideWithValue(const [
+          SnackBeats.skillSpec,
+          ColorBeats.skillSpec,
+        ]),
       ],
       child: const SpecialKidsApp(),
     ),

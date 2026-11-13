@@ -6,6 +6,7 @@ import 'package:sk_core/l10n/app_localizations.dart';
 import 'sing_say/sing_say.dart';
 
 import 'package:snack_beats_game/snack_beats/snack_beats.dart';
+import 'package:color_beats_game/color_beats/color_beats.dart';
 
 /// Every game/tool registers here; the hub renders this list.
 /// To add a game: create `lib/games/ID/`, use the core/ services, add a GameInfo below.
@@ -32,6 +33,13 @@ final games = <GameInfo>[
     color: const Color(0xFFFF1744),
     title: (l) => l.gameSnackBeats,
     launch: (context, ref) => SnackBeats.start(context, ref),
+  ),
+  GameInfo(
+    id: ColorBeats.id,
+    emoji: '🧱',
+    color: const Color(0xFF2979FF),
+    title: (l) => l.gameColorBeats,
+    launch: (context, ref) => ColorBeats.start(context, ref),
   ),
   GameInfo(
     id: SingSay.id,

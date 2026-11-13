@@ -8,9 +8,11 @@ Learning games for teens with intellectual developmental disorder (IDD). English
 apps/
   special_kids/        Hub app: Snack Beats + Sing & Say + upcoming games   (com.specialkids.special_kids)
   snack_beats/         Standalone Snack Beats app                             (com.specialkids.snack_beats)
+  color_beats/        Standalone Color Beats app                            (com.specialkids.color_beats)
 packages/
   sk_core/             Shared core used by every app and game
   snack_beats_game/    Snack Beats game module (used by both apps)
+  color_beats_game/   Color Beats block puzzle module (hub + standalone app)
 prototype/             v1 web prototype (plain JS) for quick idea tests
 tool/                  dev scripts (web screenshots, FPS probe, no-cache web server)
 ```
@@ -35,6 +37,16 @@ QA flags: `--dart-define=SK_SEED=7` (repeatable board), `--dart-define=SK_SHOWCA
 + obstacles (ice 1–2 layers, walls, rocks, mud) + fruit goals. Moves are calibrated by a play-test robot
 (half goal-aware, half random moves): moves = 80th percentile of robot games + 2, so most children can win.
 Chapters of 20 levels introduce one thing at a time; every 5th level is an easy one.
+
+## Color Beats
+
+Block puzzle on an 8x8 board: the child drags 1 of 3 pieces onto the board (or taps a piece, then the board).
+Full rows/columns clear and play the next notes of the level's song. Levels (`engine/levels.dart`, made from the
+index) ask to clear N lines and/or collect gems (💎 ⭐ 🎵) hidden in starting blocks. When no piece fits, the
+`outOfMoves` slot runs a lesson chosen by the parent ("Can I have more blocks, please?" / counting); it clears the
+3 fullest rows and deals pieces that fit (max 3 per level, then "Try again"). Calm mode is endless and makes space
+by itself. A hint ghost appears after 10 s idle and waits longer as the child plays alone.
+The play-test robot in `test/grid_test.dart` checks that levels stay winnable. Release: `make ship APP=colorbeats`.
 
 ## packages/sk_core
 

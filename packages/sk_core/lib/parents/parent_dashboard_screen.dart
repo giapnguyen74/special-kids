@@ -865,7 +865,7 @@ class _ParentDashboardScreenState extends ConsumerState<ParentDashboardScreen> {
             for (final MapEntry(key: slot, value: ids)
                 in spec.slots.entries) ...[
               Text(
-                slot.title(p.lang),
+                spec.slotTitle(slot, p.lang),
                 style: const TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w900,
@@ -932,7 +932,7 @@ class _ParentDashboardScreenState extends ConsumerState<ParentDashboardScreen> {
                 Text(
                   t(
                     'All off: the child can only restart the level.',
-                    'Tắt hết: khi hết lượt bé chỉ có thể chơi lại màn.',
+                    'Tắt hết: bé chỉ có thể chơi lại màn.',
                   ),
                   style: const TextStyle(color: AppColors.muted),
                 ),

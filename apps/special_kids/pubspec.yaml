@@ -45,6 +45,8 @@ dependencies:
     path: ../../packages/sk_core
   snack_beats_game:
     path: ../../packages/snack_beats_game
+  color_beats_game:
+    path: ../../packages/color_beats_game
 
 dev_dependencies:
   flutter_test:

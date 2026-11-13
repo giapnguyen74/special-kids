@@ -31,6 +31,9 @@ enum SkillSlot {
   };
 }
 
+/// What a lesson in the [SkillSlot.outOfMoves] slot earns (changes the request words the child builds).
+enum SkillReward { moves, blocks }
+
 enum SkillCategory { communication, choice, math, emotions, dailyLife }
 
 /// What the game tells the lesson.
@@ -42,6 +45,7 @@ class SkillRequest {
     this.suggestedFood,
     this.customer = '🧑',
     this.reward = '+5',
+    this.rewardKind = SkillReward.moves,
   });
   final String game;
   final SkillSlot slot;
@@ -51,6 +55,9 @@ class SkillRequest {
 
   /// Shown to the child, e.g. "+5" moves.
   final String reward;
+
+  /// What the reward is (moves in Snack Beats, new blocks in Color Beats).
+  final SkillReward rewardKind;
 }
 
 /// What the lesson tells the game (and the progress log).
@@ -122,6 +129,7 @@ final skillModules = <SkillModule>[
       seed: r.levelIndex * 7 + DateTime.now().millisecond,
       game: r.game,
       reward: r.reward,
+      rewardKind: r.rewardKind,
     ),
   ),
   SkillModule(
@@ -138,6 +146,7 @@ final skillModules = <SkillModule>[
       seed: r.levelIndex * 13 + DateTime.now().millisecond,
       game: r.game,
       reward: r.reward,
+      rewardKind: r.rewardKind,
     ),
   ),
 ];
@@ -169,11 +178,19 @@ class GameSkillSpec {
     required this.titleVi,
     required this.slots,
     required this.defaults,
+    this.slotTitles = const {},
   });
   final String id, emoji, titleEn, titleVi;
   final Map<SkillSlot, List<String>> slots;
   final Map<SkillSlot, List<String>> defaults;
+
+  /// Game-specific names for slots shown to parents (en, vi), e.g. "When the board is full".
+  final Map<SkillSlot, (String, String)> slotTitles;
   String title(Lang l) => l == Lang.vi ? titleVi : titleEn;
+  String slotTitle(SkillSlot slot, Lang l) => switch (slotTitles[slot]) {
+    (final en, final vi) => l == Lang.vi ? vi : en,
+    null => slot.title(l),
+  };
 }
 
 /// Games in the current app (each app overrides this in main()).

@@ -140,5 +140,22 @@
   "pSpeechSpeed": "Reading speed",
   "speedSlow": "Slow",
   "speedMedium": "A bit slow",
-  "speedNormal": "Normal"
+  "speedNormal": "Normal",
+  "gameColorBeats": "Color Beats",
+  "gameColorBeatsDesc": "Fit the blocks. Clear lines. Make music.",
+  "tbClearLines": "Clear {n} lines!",
+  "tbBoardFull": "No more space!",
+  "tbNewBlocks": "🎁 New blocks",
+  "tbNewBlocksNote": "Do a small challenge to clear space and keep playing!",
+  "tbLevelDone": "You did it!",
+  "tbScore": "Score",
+  "tbBest": "Best",
+  "tbHelpCleared": "More space!",
+  "@tbClearLines": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  }
 }

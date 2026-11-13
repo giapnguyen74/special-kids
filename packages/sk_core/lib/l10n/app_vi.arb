@@ -109,5 +109,15 @@
   "pSpeechSpeed": "Tốc độ đọc",
   "speedSlow": "Chậm",
   "speedMedium": "Hơi chậm",
-  "speedNormal": "Bình thường"
+  "speedNormal": "Bình thường",
+  "gameColorBeats": "Color Beats",
+  "gameColorBeatsDesc": "Xếp gạch. Xóa hàng. Tạo âm nhạc.",
+  "tbClearLines": "Xóa {n} hàng nhé!",
+  "tbBoardFull": "Hết chỗ rồi!",
+  "tbNewBlocks": "🎁 Gạch mới",
+  "tbNewBlocksNote": "Làm một thử thách nhỏ để có thêm chỗ và chơi tiếp nhé!",
+  "tbLevelDone": "Con làm được rồi!",
+  "tbScore": "Điểm",
+  "tbBest": "Kỷ lục",
+  "tbHelpCleared": "Thêm chỗ rồi!"
 }

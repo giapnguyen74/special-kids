@@ -757,6 +757,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Normal'**
   String get speedNormal;
+
+  /// No description provided for @gameColorBeats.
+  ///
+  /// In en, this message translates to:
+  /// **'Color Beats'**
+  String get gameColorBeats;
+
+  /// No description provided for @gameColorBeatsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Fit the blocks. Clear lines. Make music.'**
+  String get gameColorBeatsDesc;
+
+  /// No description provided for @tbClearLines.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear {n} lines!'**
+  String tbClearLines(int n);
+
+  /// No description provided for @tbBoardFull.
+  ///
+  /// In en, this message translates to:
+  /// **'No more space!'**
+  String get tbBoardFull;
+
+  /// No description provided for @tbNewBlocks.
+  ///
+  /// In en, this message translates to:
+  /// **'🎁 New blocks'**
+  String get tbNewBlocks;
+
+  /// No description provided for @tbNewBlocksNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Do a small challenge to clear space and keep playing!'**
+  String get tbNewBlocksNote;
+
+  /// No description provided for @tbLevelDone.
+  ///
+  /// In en, this message translates to:
+  /// **'You did it!'**
+  String get tbLevelDone;
+
+  /// No description provided for @tbScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Score'**
+  String get tbScore;
+
+  /// No description provided for @tbBest.
+  ///
+  /// In en, this message translates to:
+  /// **'Best'**
+  String get tbBest;
+
+  /// No description provided for @tbHelpCleared.
+  ///
+  /// In en, this message translates to:
+  /// **'More space!'**
+  String get tbHelpCleared;
 }
 
 class _AppLocalizationsDelegate

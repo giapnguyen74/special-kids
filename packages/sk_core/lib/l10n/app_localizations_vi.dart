@@ -347,4 +347,37 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get speedNormal => 'Bình thường';
+
+  @override
+  String get gameColorBeats => 'Color Beats';
+
+  @override
+  String get gameColorBeatsDesc => 'Xếp gạch. Xóa hàng. Tạo âm nhạc.';
+
+  @override
+  String tbClearLines(int n) {
+    return 'Xóa $n hàng nhé!';
+  }
+
+  @override
+  String get tbBoardFull => 'Hết chỗ rồi!';
+
+  @override
+  String get tbNewBlocks => '🎁 Gạch mới';
+
+  @override
+  String get tbNewBlocksNote =>
+      'Làm một thử thách nhỏ để có thêm chỗ và chơi tiếp nhé!';
+
+  @override
+  String get tbLevelDone => 'Con làm được rồi!';
+
+  @override
+  String get tbScore => 'Điểm';
+
+  @override
+  String get tbBest => 'Kỷ lục';
+
+  @override
+  String get tbHelpCleared => 'Thêm chỗ rồi!';
 }

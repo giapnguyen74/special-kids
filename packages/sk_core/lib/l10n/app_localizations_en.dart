@@ -346,4 +346,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get speedNormal => 'Normal';
+
+  @override
+  String get gameColorBeats => 'Color Beats';
+
+  @override
+  String get gameColorBeatsDesc => 'Fit the blocks. Clear lines. Make music.';
+
+  @override
+  String tbClearLines(int n) {
+    return 'Clear $n lines!';
+  }
+
+  @override
+  String get tbBoardFull => 'No more space!';
+
+  @override
+  String get tbNewBlocks => '🎁 New blocks';
+
+  @override
+  String get tbNewBlocksNote =>
+      'Do a small challenge to clear space and keep playing!';
+
+  @override
+  String get tbLevelDone => 'You did it!';
+
+  @override
+  String get tbScore => 'Score';
+
+  @override
+  String get tbBest => 'Best';
+
+  @override
+  String get tbHelpCleared => 'More space!';
 }

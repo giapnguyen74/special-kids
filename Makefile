@@ -9,7 +9,7 @@
 #   make test               all tests (packages + apps)
 #   make android-keys       create the Android release signing key (once; back it up!)
 #
-#   APP=snackbeats (default) | specialkids   picks the app; each has its own VERSION file.
+#   APP=snackbeats (default) | specialkids | colorbeats   picks the app; each has its own VERSION file.
 #
 # Releases go to the public repo shared by all apps, so everything is namespaced by APP:
 #   <APP>-v<version>   one release per version, holding the APK
@@ -31,12 +31,16 @@ ifeq ($(APP),snackbeats)
   DIR := apps/snack_beats
   NAME := SnackBeats
   TITLE := Snack Beats
+else ifeq ($(APP),colorbeats)
+  DIR := apps/color_beats
+  NAME := ColorBeats
+  TITLE := Color Beats
 else ifeq ($(APP),specialkids)
   DIR := apps/special_kids
   NAME := SpecialKids
   TITLE := Special Kids
 else
-  $(error APP must be snackbeats or specialkids)
+  $(error APP must be snackbeats, specialkids or colorbeats)
 endif
 
 CURRENT := $(shell cat $(DIR)/VERSION)
@@ -96,7 +100,7 @@ install:
 	@v=$$(cat $(DIR)/VERSION); $(ADB) install -r dist/$(APP)/$$v/$(NAME)-$$v.apk
 
 test:
-	@for d in packages/sk_core packages/snack_beats_game apps/special_kids apps/snack_beats; do \
+	@for d in packages/sk_core packages/snack_beats_game packages/color_beats_game apps/special_kids apps/snack_beats apps/color_beats; do \
 		printf '%-28s ' $$d; (cd $$d && flutter test 2>&1 | tail -1) || exit 1; done
 
 android-keys:
