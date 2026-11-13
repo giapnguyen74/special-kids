@@ -4,7 +4,7 @@ publish_to: none
 environment:
   sdk: ^3.13.7
 workspace:
-  - apps/special_kids
+  - apps/sing_say
   - apps/snack_beats
   - apps/color_beats
   - packages/sk_core

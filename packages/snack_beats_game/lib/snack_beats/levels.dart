@@ -40,7 +40,7 @@ class SnackLevel {
   ];
 }
 
-/// Number of designed levels (after that, levels 101–200 repeat).
+/// Number of designed levels. Levels never run out: after 200, levels 101–200 repeat (the level number keeps going up).
 int get designedLevelCount => levelData.length;
 
 SnackLevel snackLevel(int i) {

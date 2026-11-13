@@ -12,15 +12,17 @@ class GoalItem {
   final int left;
 }
 
-/// Lines to clear + gems to collect.
+/// Lines to clear + gems to collect + points still needed.
 List<GoalItem> goalItems(
   BlockLevel lv, {
   int? linesLeft,
   List<int>? gemsLeft,
+  int? scoreLeft,
 }) => [
   if (lv.lines > 0) GoalItem('↔️', linesLeft ?? lv.lines),
   for (var k = 0; k < lv.gems.length; k++)
     if (lv.gems[k] > 0) GoalItem(gemEmojis[k], gemsLeft?[k] ?? lv.gems[k]),
+  if (lv.score > 0) GoalItem('🏆', scoreLeft ?? lv.score),
 ];
 
 class GoalChips extends StatelessWidget {

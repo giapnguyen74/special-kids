@@ -14,6 +14,7 @@ import 'package:sk_core/l10n/app_localizations.dart';
 import 'package:sk_core/testing/fakes.dart';
 import 'package:color_beats_game/color_beats/board/block_game.dart';
 import 'package:color_beats_game/color_beats/engine/grid.dart';
+import 'package:color_beats_game/color_beats/engine/level_gen.dart';
 import 'package:color_beats_game/color_beats/engine/levels.dart';
 import 'package:color_beats_game/color_beats/screens/play_screen.dart';
 import 'package:color_beats_game/color_beats/color_beats.dart';
@@ -21,14 +22,12 @@ import 'package:color_beats_game/color_beats/color_beats.dart';
 /// A level whose board is completely full: nothing fits from the start.
 BlockLevel fullLevel() => BlockLevel(
   index: 0,
-  lines: 3,
-  gems: const [],
-  tier: 0,
-  start: {
-    for (var r = 0; r < 8; r++)
-      for (var c = 0; c < 8; c++) (r, c): 1,
-  },
-  startGems: const {},
+  data: LevelData(
+    tier: 0,
+    lines: 3,
+    score: 0,
+    board: List.filled(8, '11111111'),
+  ),
 );
 
 void main() {

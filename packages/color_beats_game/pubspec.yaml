@@ -1,5 +1,5 @@
 name: color_beats_game
-description: Color Beats block puzzle game module (used by the Special Kids hub app and the standalone Color Beats app).
+description: Color Beats block puzzle game module (used by the Color Beats app).
 publish_to: none
 version: 1.0.0
 resolution: workspace

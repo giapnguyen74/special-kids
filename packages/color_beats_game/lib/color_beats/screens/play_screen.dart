@@ -119,7 +119,10 @@ class _BlockPlayScreenState extends ConsumerState<BlockPlayScreen>
     }
   }
 
-  bool get _allDone => linesLeft == 0 && gemsLeft.every((n) => n == 0);
+  int get _scoreLeft => max(0, (level?.score ?? 0) - game.grid.score);
+
+  bool get _allDone =>
+      linesLeft == 0 && gemsLeft.every((n) => n == 0) && _scoreLeft == 0;
 
   void _checkWin() {
     final lv = level;
@@ -372,6 +375,7 @@ class _BlockPlayScreenState extends ConsumerState<BlockPlayScreen>
                     lv!,
                     linesLeft: linesLeft,
                     gemsLeft: gemsLeft,
+                    scoreLeft: _scoreLeft,
                   ),
                 ),
               const SizedBox(height: 14),

@@ -1,5 +1,5 @@
 name: snack_beats_game
-description: Snack Beats match-3 game module (used by the Special Kids hub app and the standalone Snack Beats app).
+description: Snack Beats match-3 game module (used by the Snack Beats app).
 publish_to: none
 version: 1.0.0
 resolution: workspace

@@ -2,7 +2,9 @@ import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:color_beats_game/color_beats/engine/grid.dart';
+import 'package:color_beats_game/color_beats/engine/level_gen.dart';
 import 'package:color_beats_game/color_beats/engine/levels.dart';
+import 'package:color_beats_game/color_beats/levels_data.g.dart';
 
 Piece shape(String s, [int color = 0]) => Piece(parseShape(s), color);
 
@@ -89,76 +91,64 @@ void main() {
     expect(g.filled, 1);
   });
 
-  test('levels: starting blocks never make a full line; goals exist', () {
-    for (var i = 0; i < 200; i++) {
-      final lv = blockLevel(i);
-      final g = lv.newGrid();
-      for (var r = 0; r < 8; r++) {
-        expect(
-          [for (var c = 0; c < 8; c++) g.at(r, c)].any((v) => v < 0),
-          isTrue,
-          reason: 'level $i row $r',
-        );
-      }
-      for (var c = 0; c < 8; c++) {
-        expect(
-          [for (var r = 0; r < 8; r++) g.at(r, c)].any((v) => v < 0),
-          isTrue,
-          reason: 'level $i col $c',
-        );
-      }
-      expect(
-        lv.lines + lv.gems.fold(0, (a, b) => a + b),
-        greaterThan(0),
-        reason: 'level $i',
-      );
-      expect(g.gems.length, lv.gems.fold(0, (a, b) => a + b));
-    }
-  });
-
-  // Play-test robot: places the hint move (most lines, most neighbours). With the challenge
-  // help (3 rescues), nearly every level should be won by a simple strategy.
-  test('robot wins most levels', () {
-    var wins = 0, winsNoHelp = 0;
-    const n = 60, games = 6;
-    for (var i = 0; i < n; i++) {
-      for (var s = 0; s < games; s++) {
+  test(
+    '500 different levels; no full line at the start; every level has a goal',
+    () {
+      expect(levelData, hasLength(500));
+      expect(levelData.map((d) => d.signature).toSet(), hasLength(500));
+      for (var i = 0; i < 500; i++) {
         final lv = blockLevel(i);
         final g = lv.newGrid();
-        final dealer = PieceDealer(tier: lv.tier, rng: Random(i * 100 + s));
-        var lines = lv.lines;
-        final gems = [...lv.gems];
-        var rescues = 0;
-        var tray = <Piece?>[...dealer.deal(g)];
-        var won = false;
-        for (var step = 0; step < 400; step++) {
-          final m = g.bestMove(tray);
-          if (m == null) {
-            if (rescues == 3) break;
-            rescues++;
-            final r = g.clearFullest(3);
-            r.gems.forEach((k, v) => gems[k] = max(0, gems[k] - v));
-            tray = [...dealer.deal(g)];
-            continue;
-          }
-          final r = g.place(tray[m.$1]!, m.$2, m.$3);
-          tray[m.$1] = null;
-          lines = max(0, lines - r.lines);
-          r.gems.forEach((k, v) => gems[k] = max(0, gems[k] - v));
-          if (lines == 0 && gems.every((x) => x == 0)) {
-            won = true;
-            break;
-          }
-          if (tray.every((p) => p == null)) tray = [...dealer.deal(g)];
+        for (var r = 0; r < 8; r++) {
+          expect(
+            [for (var c = 0; c < 8; c++) g.at(r, c)].any((v) => v < 0),
+            isTrue,
+            reason: 'level $i row $r',
+          );
         }
-        if (won) wins++;
-        if (won && rescues == 0) winsNoHelp++;
+        for (var c = 0; c < 8; c++) {
+          expect(
+            [for (var r = 0; r < 8; r++) g.at(r, c)].any((v) => v < 0),
+            isTrue,
+            reason: 'level $i col $c',
+          );
+        }
+        final gemTotal = lv.gems.fold(0, (a, b) => a + b);
+        expect(
+          lv.lines + gemTotal + lv.score,
+          greaterThan(0),
+          reason: 'level $i',
+        );
+        expect(g.gems.length, gemTotal);
+      }
+    },
+  );
+
+  test('levels never run out: after 500, levels 101-500 repeat', () {
+    expect(blockLevel(500).data, same(levelData[100]));
+    expect(blockLevel(899).data, same(levelData[499]));
+    expect(blockLevel(900).data, same(levelData[100]));
+    final far = blockLevel(123456);
+    expect(far.index, 123456);
+    expect(levelData.contains(far.data), isTrue);
+  });
+
+  // Play-test robot (hint move every time). With the challenge help (3 rescues) every
+  // sampled level should be won; without help most of them.
+  test('robot wins levels across the whole game', () {
+    var wins = 0, winsNoHelp = 0, n = 0;
+    for (var i = 0; i < 500; i += 7) {
+      for (var s = 0; s < 3; s++) {
+        n++;
+        if (robotWins(levelData[i], 5000 + s, rescues: 3)) wins++;
+        if (robotWins(levelData[i], 5000 + s)) winsNoHelp++;
       }
     }
     // ignore: avoid_print
     print(
-      'robot: won ${wins / (n * games) * 100}% (without help ${winsNoHelp / (n * games) * 100}%)',
+      'robot: ${(100 * wins / n).round()}% with help, ${(100 * winsNoHelp / n).round()}% without',
     );
-    expect(wins / (n * games), greaterThan(0.9));
+    expect(wins / n, greaterThan(0.95));
+    expect(winsNoHelp / n, greaterThan(0.75));
   });
 }

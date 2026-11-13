@@ -9,7 +9,7 @@ import 'package:sk_core/core/ui/theme.dart';
 import 'package:sk_core/l10n/app_localizations.dart';
 import 'package:snack_beats_game/snack_beats/snack_beats_home.dart';
 
-/// Standalone Snack Beats app. Same game + shared core as the Special Kids hub app.
+/// Snack Beats app (one app per game; all share sk_core).
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
